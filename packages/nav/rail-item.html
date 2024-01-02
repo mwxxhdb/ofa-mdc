@@ -1,0 +1,43 @@
+<template component>
+  <style>
+    .rail-item-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .active-indicator:hover {
+      border-radius: 25%;
+      background-color: yellow;
+      min-width: 300dp;
+      width: 300dp;
+    }
+  </style>
+  <a class="rail-item-wrapper">
+    <x-if :value="item.type === 'icon-button'">
+      <!-- TODO icon button -->
+      <p-icon :name="getIcon(item.icon)"></p-icon>
+    </x-if>
+    <x-else>
+      <div class="active-indicator">
+        <p-icon :name="getIcon(item.icon)"></p-icon>
+      </div>
+    </x-else>
+    <span> {{item.label}} </span>
+  </a>
+  <script>
+    export default {
+      tag: 'm-rail-item',
+      attrs: {
+        item: {}
+      },
+      proto: {
+        getIcon(icon) {
+          if (typeof icon === 'string') return icon;
+          if (icon.default) return icon.default;
+          return null;
+        }
+      }
+    }
+  </script>
+</template>

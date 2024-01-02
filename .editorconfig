@@ -1,0 +1,8 @@
+root = true
+
+[*.{html,js,md,sh,svg,txt,xml,xsd}]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+ij_continuation_indent_size = 4

@@ -1,0 +1,83 @@
+<template page>
+  <l-m src="../packages/app/app-shell.html"></l-m>
+  <l-m src="../packages/nav/nav-rail.html"></l-m>
+  <m-app-shell>
+    <m-nav-rail slot="sidebarLeft" :menus="menus"></m-nav-rail>
+    test
+  </m-app-shell>
+  <script>
+    export default {
+      data: {
+        menus: [
+          {
+            type: "icon-button",
+            icon: "search",
+          },
+          {
+            active: true,
+            label: "Home",
+            icon: {
+              default: "home-outlined",
+              active: "home",
+            },
+          },
+          {
+            label: "Get started",
+            icon: "apps",
+          },
+          {
+            label: "Develop",
+            icon: "code",
+          },
+          {
+            label: "Foundations",
+            icon: "foundation",
+          },
+          {
+            label: "Styles",
+            icon: {
+              default: "color-lens-outlined",
+              active: "color-lens",
+            },
+          },
+          {
+            label: "Components",
+            icon: {
+              default: "book-outlined",
+              active: "book",
+            },
+            items: [
+              {
+                label: "Buttons",
+                items: [
+                  { label: "All buttons" },
+                  { label: "Common buttons" },
+                  { label: "FAB" },
+                  { label: "Extended FAB" },
+                  { label: "Icon buttons" },
+                  { label: "Segmented buttons" },
+                ],
+              },
+            ],
+          },
+          {
+            label: "Blog",
+            icon: "stars-outlined",
+          },
+          {
+            type: "space",
+          },
+          {
+            type: "icon-button",
+            icon: {
+              default: "dark-mode-outlined",
+              active: "light-mode-outlined",
+              hover: "dark-mode",
+              activeHover: "light-mode",
+            },
+          },
+        ],
+      },
+    };
+  </script>
+</template>

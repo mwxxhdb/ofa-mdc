@@ -1,0 +1,75 @@
+<template component>
+  <style>
+    .app-shell {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .app-header {
+      flex: none;
+      z-index: 10;
+    }
+
+    .app-content {
+      display: flex;
+      flex: 1 1 auto;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .app-footer {
+      flex: none;
+    }
+
+    .sidebar-left {
+      flex: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .sidebar-right {
+      flex: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .page-content {
+      flex: 1 1 0%;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      scrollbar-gutter: auto;
+    }
+  </style>
+  <div class="app-shell">
+    <header class="app-header">
+      <slot name="header"></slot>
+    </header>
+    <div class="app-content">
+      <aside class="sidebar-left">
+        <slot name="sidebarLeft"></slot>
+      </aside>
+      <div class="page-content">
+        <slot></slot>
+      </div>
+      <aside class="sidebar-right">
+        <slot name="sidebarRight"></slot>
+      </aside>
+    </div>
+    <footer class="app-footer">
+      <slot name="footer"></slot>
+    </footer>
+  </div>
+  <script>
+    export default {
+      tag: "m-app-shell",
+    };
+  </script>
+</template>
