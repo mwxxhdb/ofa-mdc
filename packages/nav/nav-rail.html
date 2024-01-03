@@ -3,36 +3,18 @@
     .nav-rail-content {
       display: flex;
       flex-direction: column;
+      align-items: center;
       width: 188px;
       margin-top: 20px;
-      min-width: 112dp;
-      max-width: 280dp;
     }
   </style>
-  <l-m src="https://cdn.jsdelivr.net/npm/p-icons@0.0.3/p-icon.html"></l-m>
-  <l-m src="./rail-item.html"></l-m>
 
   <nav class="nav-rail-content">
-    <x-fill :value="menus">
-      <m-rail-item :item="$data"></m-rail-item>
-    </x-fill>
+    <slot></slot>
   </nav>
   <script>
     export default {
-      tag: "m-nav-rail",
-      data: {
-      },
-      attrs: {
-        menus: [],
-      },
-      ready() {
-      },
-      getIcon(icon) {
-        console.log(icon);
-        if (icon instanceof 'string') return icon;
-        if (icon.default) return icon.default;
-        return null;
-      }
+      tag: "m-nav-rail"
     };
   </script>
 </template>

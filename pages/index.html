@@ -1,9 +1,20 @@
 <template page>
   <l-m src="../packages/app/app-shell.html"></l-m>
   <l-m src="../packages/nav/nav-rail.html"></l-m>
+  <l-m src="../packages/nav/rail-item.html"></l-m>
   <m-app-shell>
-    <m-nav-rail slot="sidebarLeft" :menus="menus"></m-nav-rail>
-    test
+    <m-nav-rail slot="sidebarLeft">
+      <!-- icon button search -->
+      <m-rail-item label="Home" icon="home-outlined" icon-active="home" active></m-rail-item>
+      <m-rail-item label="Get started" icon="apps"></m-rail-item>
+      <m-rail-item label="Develop" icon="code"></m-rail-item>
+      <m-rail-item label="Foundations" icon="foundation"></m-rail-item>
+      <m-rail-item label="Styles" icon="color-lens-outlined" icon-active="color-lens"></m-rail-item>
+      <m-rail-item label="Components" icon="book-outlined" icon-active="book"></m-rail-item>
+      <m-rail-item label="Blog" icon="stars-outlined"></m-rail-item>
+      <!-- space -->
+      <!-- dark switcher -->
+    </m-nav-rail>
   </m-app-shell>
   <script>
     export default {
@@ -14,38 +25,6 @@
             icon: "search",
           },
           {
-            active: true,
-            label: "Home",
-            icon: {
-              default: "home-outlined",
-              active: "home",
-            },
-          },
-          {
-            label: "Get started",
-            icon: "apps",
-          },
-          {
-            label: "Develop",
-            icon: "code",
-          },
-          {
-            label: "Foundations",
-            icon: "foundation",
-          },
-          {
-            label: "Styles",
-            icon: {
-              default: "color-lens-outlined",
-              active: "color-lens",
-            },
-          },
-          {
-            label: "Components",
-            icon: {
-              default: "book-outlined",
-              active: "book",
-            },
             items: [
               {
                 label: "Buttons",
@@ -59,10 +38,6 @@
                 ],
               },
             ],
-          },
-          {
-            label: "Blog",
-            icon: "stars-outlined",
           },
           {
             type: "space",

@@ -1,41 +1,44 @@
 <template component>
+  <l-m src="https://cdn.jsdelivr.net/npm/p-icons@0.0.3/p-icon.html"></l-m>
+
   <style>
-    .rail-item-wrapper {
+    :host {
+      width: 100%;
+    }
+
+    .rail-item-container {
       display: flex;
       flex-direction: column;
       align-items: center;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 16px;
     }
 
-    .active-indicator:hover {
-      border-radius: 25%;
-      background-color: yellow;
-      min-width: 300dp;
-      width: 300dp;
+    .rail-item-container:hover {
+      background: var(--md-sys-color-secondary-container);
     }
   </style>
-  <a class="rail-item-wrapper">
-    <x-if :value="item.type === 'icon-button'">
-      <!-- TODO icon button -->
-      <p-icon :name="getIcon(item.icon)"></p-icon>
+
+  <a class="rail-item-container">
+    <x-if :value="typeof icon === 'string'">
+      <p-icon :name="getIcon()"></p-icon>
     </x-if>
-    <x-else>
-      <div class="active-indicator">
-        <p-icon :name="getIcon(item.icon)"></p-icon>
-      </div>
-    </x-else>
-    <span> {{item.label}} </span>
+    <span class="rail-item-label">{{label}}</span>
   </a>
   <script>
     export default {
       tag: 'm-rail-item',
       attrs: {
-        item: {}
+        label: null,
+        icon: null,
+        iconActive: null,
+        active: 'false',
       },
       proto: {
-        getIcon(icon) {
-          if (typeof icon === 'string') return icon;
-          if (icon.default) return icon.default;
-          return null;
+        getIcon() {
+          if (this.active !== 'false') return this.iconActive ?? this.icon;
+          return this.icon
         }
       }
     }
