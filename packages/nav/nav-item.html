@@ -110,6 +110,7 @@
             next = next.nextElementSibling;
           }
           e.preventDefault();
+          e.stopPropagation();
         },
       },
       watch: {

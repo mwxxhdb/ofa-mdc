@@ -160,6 +160,7 @@
   --md-ref-palette-black: #000000ff;
   /* White */
   --md-ref-palette-white: #ffffffff;
+  --md-ext-scrim: rgba(50, 47, 55, 0.4);
 }
 
 /* typography */
@@ -661,6 +662,15 @@
   --md-sys-elevation-level0-value: 0;
   --md-sys-elevation-level0-unit: 1;
   --md-sys-elevation-level0: 0;
+}
+
+/* components */
+:root {
+  --md-nav-drawer-width: 25rem;
+  --md-nav-drawer-height: calc(calc(100% - var(--md-ext-padding-large, 1rem)) - var(--md-ext-padding-large, 1rem));
+  --md-nav-drawer-bg: var(--md-sys-color-surface);
+  --md-nav-drawer-shadow: var(--md-sys-elevation-level0);
+  --md-nav-drawer-padding: var(--md-ext-padding-large, 1rem) var(--md-ext-padding-medium, 0.5rem);
 }
 
 /* theme-light */

@@ -17,7 +17,7 @@
     <!-- space -->
     <!-- dark switcher -->
     <!-- </m-nav-rail> -->
-    <m-nav-drawer slot="sidebarLeft">
+    <m-nav-drawer slot="sidebarLeft" sync:open="drawerOpen">
       <m-nav-item label="App bars"></m-nav-item>
       <m-nav-item label="Badges"></m-nav-item>
       <m-nav-item label="Buttons"></m-nav-item>
@@ -43,43 +43,18 @@
       <m-nav-item label="Time pickers"></m-nav-item>
       <m-nav-item label="Tooltips"></m-nav-item>
     </m-nav-drawer>
+    <h2>content</h2>
+    <button on:click="test">test</button>
   </m-app-shell>
   <script>
     export default {
       data: {
-        menus: [
-          {
-            type: "icon-button",
-            icon: "search",
-          },
-          {
-            items: [
-              {
-                label: "Buttons",
-                items: [
-                  { label: "All buttons" },
-                  { label: "Common buttons" },
-                  { label: "FAB" },
-                  { label: "Extended FAB" },
-                  { label: "Icon buttons" },
-                  { label: "Segmented buttons" },
-                ],
-              },
-            ],
-          },
-          {
-            type: "space",
-          },
-          {
-            type: "icon-button",
-            icon: {
-              default: "dark-mode-outlined",
-              active: "light-mode-outlined",
-              hover: "dark-mode",
-              activeHover: "light-mode",
-            },
-          },
-        ],
+        drawerOpen: false,
+      },
+      proto: {
+        test() {
+          this.drawerOpen = !(this.drawerOpen === 'true')
+        }
       },
     };
   </script>

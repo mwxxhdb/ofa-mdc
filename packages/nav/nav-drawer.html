@@ -1,30 +1,72 @@
 <template component>
     <style>
-        :host {
-            width: 360dp;
-            height: calc(calc(100% - var(--md-ext-padding-large, 1rem)) - var(--md-ext-padding-large, 1rem));
-            background-color: var(--md-sys-color-surface, #fffbfeff);
-            box-shadow: var(--md-sys-elevation-level0, 0);
-            border-top-right-radius: var(--md-sys-shape-corner-large-end-top-right);
-            border-bottom-right-radius: var(--md-sys-shape-corner-large-end-bottom-right);
-            padding: var(--md-ext-padding-large, 1rem) var(--md-ext-padding-medium, 0.5rem);
+        .scrim {
+            pointer-events: none;
         }
 
-        @media screen and (max-width: 840dp) {
-            :host {
+        .container {
+            width: var(--md-nav-drawer-width, 25rem);
+            height: var(--md-nav-drawer-height);
+            background-color: var(--md-nav-drawer-bg, #fffbfeff);
+            box-shadow: var(--md-nav-drawer-shadow, 0);
+            border-top-right-radius: var(--md-sys-shape-corner-large-end-top-right);
+            border-bottom-right-radius: var(--md-sys-shape-corner-large-end-bottom-right);
+            padding: var(--md-nav-drawer-padding);
+            pointer-events: auto;
+        }
+
+        @media (max-width: 60rem) {
+            .scrim {
+                visibility: hidden;
+                opacity: 0;
+
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--md-ext-scrim, rgba(50, 47, 55, 0.4));
+                pointer-events: auto;
+                z-index: 10000;
+            }
+
+            .scrim.open {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .container {
+                position: fixed;
+                top: 0;
+                left: calc(-10rem - var(--md-nav-drawer-width, 25rem));
+                transition: left .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
                 background-color: var(--md-sys-color-surface-container-low, #f5eefaff);
-                box-shadow: var(--md-sys-elevation-level1, 1dp);
+                border: 1px solid red;
+            }
+
+            .container.open {
+                left: 0;
             }
         }
     </style>
 
-    <div tabindex="0">
+    <div class="scrim" class:open="open !== null && `${open}` !== 'false'" on:click="close" />
+    <div tabindex="0" class="container" class:open="open !== null && `${open}` !== 'false'">
         <slot></slot>
     </div>
 
     <script>
         export default {
             tag: 'm-nav-drawer',
+            attrs: {
+                open: false,
+                position: null,
+            },
+            proto: {
+                close() {
+                    this.open = false;
+                }
+            },
         }
     </script>
 </template>
