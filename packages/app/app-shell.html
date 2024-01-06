@@ -1,6 +1,6 @@
 <template component>
   <style>
-    .app-shell {
+    :host {
       width: 100%;
       height: 100%;
       display: flex;
@@ -32,6 +32,7 @@
       display: grid;
       grid-template-columns: repeat(1, minmax(0, 1fr));
     }
+
     .sidebar-right {
       flex: none;
       overflow-x: hidden;
@@ -48,25 +49,25 @@
       scrollbar-gutter: auto;
     }
   </style>
-  <div class="app-shell">
-    <header class="app-header">
-      <slot name="header"></slot>
-    </header>
-    <div class="app-content">
-      <aside class="sidebar-left">
-        <slot name="sidebarLeft"></slot>
-      </aside>
-      <div class="page-content">
-        <slot></slot>
-      </div>
-      <aside class="sidebar-right">
-        <slot name="sidebarRight"></slot>
-      </aside>
+
+  <header class="app-header">
+    <slot name="header"></slot>
+  </header>
+  <div class="app-content">
+    <aside class="sidebar-left">
+      <slot name="sidebarLeft"></slot>
+    </aside>
+    <div class="page-content">
+      <slot></slot>
     </div>
-    <footer class="app-footer">
-      <slot name="footer"></slot>
-    </footer>
+    <aside class="sidebar-right">
+      <slot name="sidebarRight"></slot>
+    </aside>
   </div>
+  <footer class="app-footer">
+    <slot name="footer"></slot>
+  </footer>
+
   <script>
     export default {
       tag: "m-app-shell",

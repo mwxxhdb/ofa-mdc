@@ -1,20 +1,48 @@
 <template page>
   <l-m src="../packages/app/app-shell.html"></l-m>
+  <l-m src="../packages/nav/nav-drawer.html"></l-m>
   <l-m src="../packages/nav/nav-rail.html"></l-m>
   <l-m src="../packages/nav/rail-item.html"></l-m>
+  <l-m src="../packages/nav/nav-item.html"></l-m>
   <m-app-shell>
-    <m-nav-rail slot="sidebarLeft">
-      <!-- icon button search -->
-      <m-rail-item label="Home" icon="home-outlined" icon-active="home" active></m-rail-item>
+    <!-- <m-nav-rail slot="sidebarLeft"> -->
+    <!-- icon button search -->
+    <!-- <m-rail-item label="Home" icon="home-outlined" icon-active="home" active></m-rail-item>
       <m-rail-item label="Get started" icon="apps"></m-rail-item>
       <m-rail-item label="Develop" icon="code"></m-rail-item>
       <m-rail-item label="Foundations" icon="foundation"></m-rail-item>
       <m-rail-item label="Styles" icon="color-lens-outlined" icon-active="color-lens"></m-rail-item>
       <m-rail-item label="Components" icon="book-outlined" icon-active="book"></m-rail-item>
-      <m-rail-item label="Blog" icon="stars-outlined"></m-rail-item>
-      <!-- space -->
-      <!-- dark switcher -->
-    </m-nav-rail>
+      <m-rail-item label="Blog" icon="stars-outlined"></m-rail-item> -->
+    <!-- space -->
+    <!-- dark switcher -->
+    <!-- </m-nav-rail> -->
+    <m-nav-drawer slot="sidebarLeft">
+      <m-nav-item label="App bars"></m-nav-item>
+      <m-nav-item label="Badges"></m-nav-item>
+      <m-nav-item label="Buttons"></m-nav-item>
+      <m-nav-item label="Cards"></m-nav-item>
+      <m-nav-item label="Carousel"></m-nav-item>
+      <m-nav-item label="Checkbox"></m-nav-item>
+      <m-nav-item label="Chips"></m-nav-item>
+      <m-nav-item label="Date pickers"></m-nav-item>
+      <m-nav-item label="Dialogs"></m-nav-item>
+      <m-nav-item label="Divider"></m-nav-item>
+      <m-nav-item label="Lists"></m-nav-item>
+      <m-nav-item label="Menus"></m-nav-item>
+      <m-nav-item label="Navigation" active></m-nav-item>
+      <m-nav-item label="Progress indicators"></m-nav-item>
+      <m-nav-item label="Radio button"></m-nav-item>
+      <m-nav-item label="Search"></m-nav-item>
+      <m-nav-item label="Sheets"></m-nav-item>
+      <m-nav-item label="Sliders"></m-nav-item>
+      <m-nav-item label="Snackbar"></m-nav-item>
+      <m-nav-item label="Switch"></m-nav-item>
+      <m-nav-item label="Tabs"></m-nav-item>
+      <m-nav-item label="Text fields"></m-nav-item>
+      <m-nav-item label="Time pickers"></m-nav-item>
+      <m-nav-item label="Tooltips"></m-nav-item>
+    </m-nav-drawer>
   </m-app-shell>
   <script>
     export default {

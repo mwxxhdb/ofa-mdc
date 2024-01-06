@@ -12,11 +12,11 @@
       align-items: center;
       cursor: pointer;
       width: 100%;
-      border-radius: 16px;
+      border-radius: var(--md-sys-shape-corner-large-default-size, 16px);
     }
 
     .rail-item-container:hover {
-      background: var(--md-sys-color-secondary-container);
+      background: var(--md-sys-color-secondary-container, #e8def8ff);
     }
   </style>
 
@@ -26,6 +26,7 @@
     </x-if>
     <span class="rail-item-label">{{label}}</span>
   </a>
+
   <script>
     export default {
       tag: 'm-rail-item',
@@ -37,9 +38,12 @@
       },
       proto: {
         getIcon() {
-          if (this.active !== 'false') return this.iconActive ?? this.icon;
-          return this.icon
-        }
+          if (this.isActive()) return this.iconActive ?? this.icon;
+          return this.icon;
+        },
+        isActive() {
+          return this.active !== 'false' && this.active !== false;
+        },
       }
     }
   </script>

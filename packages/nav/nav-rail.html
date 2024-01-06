@@ -1,17 +1,21 @@
 <template component>
   <style>
-    .nav-rail-content {
+    :host {
+      background-color: var(--md-sys-color-surface, #fffbfeff);
+      border-radius: var(--md-sys-shape-corner-none-default-size, 0);
+      box-shadow: var(--md-sys-elevation-level0, 0);
+
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 188px;
-      margin-top: 20px;
+
+      height: 100%;
+      width: 100dp;
     }
   </style>
 
-  <nav class="nav-rail-content">
-    <slot></slot>
-  </nav>
+  <slot></slot>
+
   <script>
     export default {
       tag: "m-nav-rail"

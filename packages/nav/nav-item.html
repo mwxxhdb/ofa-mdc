@@ -1,5 +1,122 @@
 <template component>
+  <l-m src="https://cdn.jsdelivr.net/npm/p-icons@0.0.3/p-icon.html"></l-m>
+
+  <style>
+    .container {
+      width: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      cursor: pointer;
+      border-radius: var(--md-sys-shape-corner-large-default-size, 16px);
+      padding: var(--md-ext-padding-small, 0.25rem) var(--md-ext-padding-medium, 0.5rem);
+    }
+
+    .container.active,
+    .container:focus {
+      background-color: var(--md-sys-color-secondary-container, #e8def8ff);
+    }
+
+    .container>.label-text {
+      color: var(--md-sys-color-on-surface-variant, #49454fff);
+      font: var(--md-sys-typescale-label-large-font, Roboto);
+      line-height: var(--md-sys-typescale-label-large-line-height, 20pt);
+      letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.1pt);
+      font-weight: var(--md-sys-typescale-label-large-weight, 500);
+    }
+
+    .container.active>.label-text,
+    .container.active>p-icon {
+      color: var(--md-sys-color-on-secondary-container, #1d192bff);
+      font-weight: var(--md-sys-typescale-label-large-weight-prominent, 700);
+    }
+
+    .container>p-icon {
+      color: var(--md-sys-color-on-surface-variant, #49454fff);
+      width: var(--md-nav-item-icon-size, 24dp);
+      height: var(--md-nav-item-icon-size, 24dp);
+    }
+
+    .container:hover,
+    .container:focus {
+      background-color: var(--md-sys-color-secondary-container-hover);
+    }
+
+    .container:hover>.label-text,
+    .container:hover>p-icon,
+    .container:focus>.label-text,
+    .container:focus>p-icon {
+      color: var(--md-sys-color-on-surface, #1c1b1fff);
+    }
+
+    .container.active:hover>.label-text,
+    .container.active:hover>p-icon,
+    .container.active:focus>.label-text,
+    .container.active:focus>p-icon {
+      color: var(--md-sys-color-on-secondary-container, #1d192bff);
+    }
+  </style>
+
+  <a class="container" class:active="isActive()" tabindex="-1" on:keydown="handleKeyEvent" on:click="activeSelf">
+    <x-if :value="typeof icon === 'string'">
+      <p-icon class="icon" :name="getIcon()"></p-icon>
+    </x-if>
+    <span class="label-text">{{label}}</span>
+  </a>
+
   <script>
-    export default {};
+    export default {
+      tag: 'm-nav-item',
+      attrs: {
+        label: null,
+        icon: null,
+        iconActive: null,
+        active: null,
+      },
+      proto: {
+        getIcon() {
+          if (this.isActive()) return this.iconActive ?? this.icon;
+          return this.icon;
+        },
+        isActive() {
+          return this.active !== null && this.active !== 'false';
+        },
+        handleKeyEvent(e) {
+          const host = e.target.getRootNode()?.host;
+          let nextFocusItem = null;
+          if (e.code === 'ArrowUp') {
+            nextFocusItem = host?.previousElementSibling;
+          } else if (e.code === 'ArrowDown') {
+            nextFocusItem = host?.nextElementSibling;
+          } else if (e.code === 'Enter' || e.code === 'Space') {
+            this.activeSelf(e);
+          }
+          if (!nextFocusItem) return;
+
+          nextFocusItem.shadowRoot?.querySelector('.container')?.focus();
+          e.preventDefault();
+        },
+        activeSelf(e) {
+          this.attr('active', '');
+          const host = e.target.getRootNode()?.host;
+          let prev = host?.previousElementSibling;
+          while (prev) {
+            $(prev)?.attr('active', null);
+            prev = prev.previousElementSibling;
+          }
+          let next = host?.nextElementSibling;
+          while (next) {
+            $(next)?.attr('active', null);
+            next = next.nextElementSibling;
+          }
+          e.preventDefault();
+        },
+      },
+      watch: {
+        active(value) {
+          // TODO
+        }
+      },
+    }
   </script>
 </template>

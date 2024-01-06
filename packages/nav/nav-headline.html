@@ -1,0 +1,20 @@
+<template component>
+  <style>
+    :host {
+      color: var(--md-sys-color-on-surface-variant, #49454fff);
+      font: var(--md-sys-typescale-title-small-font, Roboto);
+      line-height: var(--md-sys-typescale-title-small-line-height, 20pt);
+      font-size: var(--md-sys-typescale-title-small-size, 14pt);
+      word-spacing: var(--md-sys-typescale-title-small-tracking, 0.1pt);
+      font-weight: var(--md-sys-typescale-title-small-weight, 500);
+    }
+  </style>
+
+  <slot></slot>
+
+  <script>
+    export default {
+      tag: 'm-nav-headline',
+    }
+  </script>
+</template>

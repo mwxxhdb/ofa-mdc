@@ -1,0 +1,30 @@
+<template component>
+    <style>
+        :host {
+            width: 360dp;
+            height: calc(calc(100% - var(--md-ext-padding-large, 1rem)) - var(--md-ext-padding-large, 1rem));
+            background-color: var(--md-sys-color-surface, #fffbfeff);
+            box-shadow: var(--md-sys-elevation-level0, 0);
+            border-top-right-radius: var(--md-sys-shape-corner-large-end-top-right);
+            border-bottom-right-radius: var(--md-sys-shape-corner-large-end-bottom-right);
+            padding: var(--md-ext-padding-large, 1rem) var(--md-ext-padding-medium, 0.5rem);
+        }
+
+        @media screen and (max-width: 840dp) {
+            :host {
+                background-color: var(--md-sys-color-surface-container-low, #f5eefaff);
+                box-shadow: var(--md-sys-elevation-level1, 1dp);
+            }
+        }
+    </style>
+
+    <div tabindex="0">
+        <slot></slot>
+    </div>
+
+    <script>
+        export default {
+            tag: 'm-nav-drawer',
+        }
+    </script>
+</template>

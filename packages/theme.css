@@ -164,6 +164,7 @@
 
 /* typography */
 :root {
+  font-size: 14pt;
   /* Label Small */
   --md-sys-typescale-label-small-text-transform: unset;
   --md-sys-typescale-label-small-axis-value: unset;
@@ -213,19 +214,14 @@
   --md-sys-typescale-label-large-font-style: unset;
   --md-sys-typescale-label-large-text-decoration: unset;
   /* Label Large line height */
-  --md-sys-typescale-label-large-line-height-value: 20px;
-  --md-sys-typescale-label-large-line-height-unit: 2px;
-  --md-sys-typescale-label-large-line-height: 20px;
+  --md-sys-typescale-label-large-line-height: 20pt;
   /* Label Large font tracking */
-  --md-sys-typescale-label-large-tracking-value: 0.10000000149011612px;
-  --md-sys-typescale-label-large-tracking-unit: 2px;
-  --md-sys-typescale-label-large-tracking: 0.10000000149011612px;
+  --md-sys-typescale-label-large-tracking: 0.1pt;
   /* Label Large font size */
-  --md-sys-typescale-label-large-size-value: 14px;
-  --md-sys-typescale-label-large-size-unit: 2px;
-  --md-sys-typescale-label-large-size: 14px;
+  --md-sys-typescale-label-large-size: 14pt;
   /* Label Large font weight */
   --md-sys-typescale-label-large-weight: var(--md-ref-typeface-weight-medium);
+  --md-sys-typescale-label-large-weight-prominent: var(--md-ref-typeface-weight-bold);
   /* Label Large font name */
   --md-sys-typescale-label-large-font: var(--md-ref-typeface-plain);
   /* Body Small */
@@ -297,17 +293,11 @@
   --md-sys-typescale-title-small-font-style: unset;
   --md-sys-typescale-title-small-text-decoration: unset;
   /* Title Small line height */
-  --md-sys-typescale-title-small-line-height-value: 20px;
-  --md-sys-typescale-title-small-line-height-unit: 2px;
-  --md-sys-typescale-title-small-line-height: 20px;
+  --md-sys-typescale-title-small-line-height: 20pt;
   /* Title Small font tracking */
-  --md-sys-typescale-title-small-tracking-value: 0.10000000149011612px;
-  --md-sys-typescale-title-small-tracking-unit: 2px;
-  --md-sys-typescale-title-small-tracking: 0.10000000149011612px;
+  --md-sys-typescale-title-small-tracking: 0.1pt;
   /* Title Small font size */
-  --md-sys-typescale-title-small-size-value: 14px;
-  --md-sys-typescale-title-small-size-unit: 2px;
-  --md-sys-typescale-title-small-size: 14px;
+  --md-sys-typescale-title-small-size: 14pt;
   /* Title Small font weight */
   --md-sys-typescale-title-small-weight: var(--md-ref-typeface-weight-medium);
   /* Title Small font name */
@@ -495,6 +485,7 @@
 /* shape */
 :root {
   /* Fully rounded */
+  --md-sys-shape-corner-full: 16px;
   --md-sys-shape-corner-full-family: 3px;
   /* Extra large top rounding */
   --md-sys-shape-corner-extra-large-top-family: 1px;
@@ -515,16 +506,10 @@
   --md-sys-shape-corner-large-top-top-right-unit: 1px;
   --md-sys-shape-corner-large-top-top-right: 16px;
   /* Large end rounding */
-  --md-sys-shape-corner-large-end-family: 1px;
-  --md-sys-shape-corner-large-end-default-size-unit: 1px;
-  --md-sys-shape-corner-large-end-default-size: 0px;
-  --md-sys-shape-corner-large-end-top-right-unit: 1px;
   --md-sys-shape-corner-large-end-top-right: 16px;
-  --md-sys-shape-corner-large-end-bottom-right-unit: 1px;
   --md-sys-shape-corner-large-end-bottom-right: 16px;
   /* Large rounding */
   --md-sys-shape-corner-large-family: 1px;
-  --md-sys-shape-corner-large-default-size-unit: 1px;
   --md-sys-shape-corner-large-default-size: 16px;
   /* Medium rounding */
   --md-sys-shape-corner-medium-family: 1px;
@@ -554,6 +539,10 @@
   --md-sys-shape-small: var(--md-sys-shape-corner-small-default-size);
   --md-sys-shape-medium: var(--md-sys-shape-corner-medium-default-size);
   --md-sys-shape-large: var(--md-sys-shape-corner-large-default-size);
+
+  --md-ext-padding-small: 0.25rem;
+  --md-ext-padding-medium: 0.5rem;
+  --md-ext-padding-large: 1rem;
 }
 
 /* motion */
@@ -637,8 +626,11 @@
   --md-sys-state-pressed-state-layer-opacity: 0.11999999731779099;
   /* Focus state layer opacity */
   --md-sys-state-focus-state-layer-opacity: 0.11999999731779099;
+  --md-sys-state-focus-indicator-thickness: 3dp;
   /* Hover state layer opacity */
   --md-sys-state-hover-state-layer-opacity: 0.07999999821186066;
+  /* --md-sys-state-hover- */
+  --md-sys-color-secondary-container-hover: color-mix(in srgb, var(--md-sys-color-secondary-container) 30%, var(--md-sys-color-secondary-container) 30%);
 }
 
 /* elevation */
@@ -662,13 +654,13 @@
   --md-sys-elevation-level2-unit: 1px;
   --md-sys-elevation-level2: 3px;
   /* +1 */
-  --md-sys-elevation-level1-value: 1px;
-  --md-sys-elevation-level1-unit: 1px;
-  --md-sys-elevation-level1: 1px;
+  --md-sys-elevation-level1-value: 1dp;
+  --md-sys-elevation-level1-unit: 1dp;
+  --md-sys-elevation-level1: 1dp;
   /* 0 */
-  --md-sys-elevation-level0-value: 0px;
-  --md-sys-elevation-level0-unit: 1px;
-  --md-sys-elevation-level0: 0px;
+  --md-sys-elevation-level0-value: 0;
+  --md-sys-elevation-level0-unit: 1;
+  --md-sys-elevation-level0: 0;
 }
 
 /* theme-light */
@@ -710,6 +702,7 @@
   --md-sys-color-on-surface-variant: var(--md-ref-palette-neutral-variant30);
   /* On surface */
   --md-sys-color-on-surface: var(--md-ref-palette-neutral10);
+  --md-sys-color-surface-container-low: var(--md-ref-palette-neutral-variant95);
   /* Surface Variant */
   --md-sys-color-surface-variant: var(--md-ref-palette-neutral-variant90);
   /* Surface */
@@ -773,6 +766,7 @@
   --md-sys-color-on-surface-variant: var(--md-ref-palette-neutral-variant80);
   /* On surface */
   --md-sys-color-on-surface: var(--md-ref-palette-neutral90);
+  --md-sys-color-surface-container-low: var(--md-ref-palette-neutral-variant10);
   /* Surface Variant */
   --md-sys-color-surface-variant: var(--md-ref-palette-neutral-variant30);
   /* Surface */
