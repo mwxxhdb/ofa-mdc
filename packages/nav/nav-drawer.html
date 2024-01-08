@@ -1,6 +1,6 @@
 <template component>
     <style>
-        .scrim {
+        .backdrop {
             pointer-events: none;
         }
 
@@ -13,35 +13,40 @@
             border-bottom-right-radius: var(--md-sys-shape-corner-large-end-bottom-right);
             padding: var(--md-nav-drawer-padding);
             pointer-events: auto;
+            overflow-y: auto;
         }
 
         @media (max-width: 60rem) {
-            .scrim {
+            .backdrop {
                 visibility: hidden;
                 opacity: 0;
 
-                position: fixed;
+                position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
                 background-color: var(--md-ext-scrim, rgba(50, 47, 55, 0.4));
                 pointer-events: auto;
-                z-index: 10000;
+                z-index: 3000;
+                transition-property: opacity visibility;
+                transition-duration: .5s;
             }
 
-            .scrim.open {
+            .backdrop.open {
                 visibility: visible;
                 opacity: 1;
+                transition-property: opacity visibility;
+                transition-duration: .5s;
             }
 
             .container {
-                position: fixed;
+                z-index: 3001;
+                position: relative;
                 top: 0;
                 left: calc(-10rem - var(--md-nav-drawer-width, 25rem));
                 transition: left .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
                 background-color: var(--md-sys-color-surface-container-low, #f5eefaff);
-                border: 1px solid red;
             }
 
             .container.open {
@@ -50,9 +55,10 @@
         }
     </style>
 
-    <div class="scrim" class:open="open !== null && `${open}` !== 'false'" on:click="close" />
-    <div tabindex="0" class="container" class:open="open !== null && `${open}` !== 'false'">
-        <slot></slot>
+    <div class="backdrop" class:open="open !== null && `${open}` !== 'false'" on:click="close">
+        <div class="container" class:open="open !== null && `${open}` !== 'false'">
+            <slot></slot>
+        </div>
     </div>
 
     <script>
@@ -65,7 +71,13 @@
             proto: {
                 close() {
                     this.open = false;
-                }
+                },
+                open() {
+                    this.open = true;
+                },
+                toggle() {
+                    this.open = !(this.open !== null && `${this.open}` !== false);
+                },
             },
         }
     </script>

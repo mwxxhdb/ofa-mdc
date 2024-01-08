@@ -3,7 +3,6 @@
 
   <style>
     .container {
-      width: 360px;
       display: flex;
       flex-direction: column;
       align-items: start;
@@ -57,7 +56,7 @@
     }
   </style>
 
-  <a class="container" class:active="isActive()" tabindex="-1" on:keydown="handleKeyEvent" on:click="activeSelf">
+  <a class="container" class:active="isActive()" tabindex="0" on:keydown="handleKeyEvent" on:click="activeSelf">
     <x-if :value="typeof icon === 'string'">
       <p-icon class="icon" :name="getIcon()"></p-icon>
     </x-if>
@@ -79,7 +78,7 @@
           return this.icon;
         },
         isActive() {
-          return this.active !== null && this.active !== 'false';
+          return this.active !== null && `${this.active}` !== 'false';
         },
         handleKeyEvent(e) {
           const host = e.target.getRootNode()?.host;
@@ -95,6 +94,7 @@
 
           nextFocusItem.shadowRoot?.querySelector('.container')?.focus();
           e.preventDefault();
+          e.stopPropagation();
         },
         activeSelf(e) {
           this.attr('active', '');
